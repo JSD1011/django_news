@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Sports News</title>
+</head>
+
+<body style="margin-top:10rem">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">RealTimeNews</a>
+    </div>
+    <ul class="nav navbar-nav">
+     <li><a href="{% url 'indexpage'%}">World_News</a></li>
+      <li ><a href="{% url 'toppage' %}">Business_News</a></li>
+       <li><a href="{% url 'trendingpage' %}">Politics_News</a></li>
+      <li><a href="{% url 'sciencepage'%}">Science_News</a></li>
+        <li><a href="{%url 'entretainmentpage' %}">Entertainment_News</a></li>
+        <li><a href="{% url 'sportspage' %}">Sports_News</a></li>
+    </ul>
+  </div>
+</nav>
+<!--<div class="container" >-->
+<div class="row" >
+    <div class="card-group" >
+        {% for value in sportsdata.data %}
+        <div class="col-md-4">
+            <div class="card" style="margin: 2rem; height: 50rem">
+                <img src="{{ value.imageUrl }}" class="card-img-top" alt="Image" style="height:25rem; width:60rem">
+
+                <div class="card-body">
+                    <h5 class="card-title"> {{ value.title }}</h5>
+                    <p class="card-text">{{ value.content }} </p>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{value.title}}</li>
+                    <li class="list-group-item">{{value.date}}</li>
+                    <li class="list-group-item">Time->{{value.time}}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!--</div>-->
+</body>
+</html>
